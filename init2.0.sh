@@ -230,14 +230,14 @@ set_ps1 () {
 }
 #安装常用软件
 centos_install_package() {
-package="vim curl lrzsz tree tmux lsof tcpdump wget net-tools iotop bc bzip2 zip unzip nfs-utils man-pages dos2unix nc telnet ntpdate bash-completion bash-completion-extras gcc make autoconf gcc-c++ glibc glibc-devel pcre pcre-devel openssl openssl-devel systemd-devel zlib-devel htop git"
+package="sudo vim curl lrzsz tree tmux lsof tcpdump wget net-tools iotop bc bzip2 zip unzip nfs-utils man-pages dos2unix nc telnet ntpdate bash-completion bash-completion-extras gcc make autoconf gcc-c++ glibc glibc-devel pcre pcre-devel openssl openssl-devel systemd-devel zlib-devel htop git"
 for i in $package
 do
     rpm -q $i &>/dev/null || yum -q install -y $i
 done
 }
 ubuntu_install_package() {
-apt-get install -y vim curl tree net-tools wget iproute2 ntpdate tcpdump telnet traceroute nfs-kernel-server nfs-common lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev gcc openssh-server iotop unzip zip bzip2 htop git
+apt-get install -y sudo vim curl tree net-tools wget iproute2 ntpdate tcpdump telnet traceroute nfs-kernel-server nfs-common lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev gcc openssh-server iotop unzip zip bzip2 htop git
 }
 
 minimal_install() {
@@ -399,7 +399,7 @@ Centos_neofetch(){
 	#rpm -q dnf dnf-plugins-core &> /dev/null || sudo yum install -y dnf-plugins-core dnf
 	#sudo dnf copr enable konimex/neofetch
     #sudo dnf install -y neofetch
-    rpm -q epel-release &> /dev/null || sudo yum install epel-release
+    rpm -q epel-release sudo &> /dev/null || sudo yum install epel-release sudo
     curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo
     sudo yum install -y neofetch
     rpm -q ruby rubygems &> /dev/null || sudo yum install -y ruby rubygems
@@ -418,7 +418,7 @@ Centos_neofetch(){
 
 Ubuntu_neofetch(){
     sudo apt-get update
-    sudo apt-get install -y neofetch
+    sudo apt-get install -y neofetch sudo
     sudo apt-get install -y ruby gem
     wget https://github.com/busyloop/lolcat/archive/master.zip
     unzip master.zip && cd  lolcat-master
@@ -435,7 +435,7 @@ Ubuntu_neofetch(){
 
 Debian_neofetch(){
     sudo apt-get update
-    sudo apt-get install -y neofetch
+    sudo apt-get install -y neofetch sudo
     sudo apt-get install -y ruby gem
     wget https://github.com/busyloop/lolcat/archive/master.zip
     unzip master.zip && cd  lolcat-master
